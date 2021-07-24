@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="scripts/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+    <div class="container" onclick="myFunction(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+    <div class="discover">
+        Discover
+    </div>
+    <div class="subheading">
+        News from all over the world
+    </div>
+    <div class="search">
+        <div class="search-form">
+            <i class="fa fa-search search-icon" aria-hidden="true"></i>
+            <form class="form-group" method="POST" action="/search">
+                <input type="text" class="form-control input-bar" placeholder="Search" name="search">
+                <button class="btn search-btn" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="main">
+        <div class="menu">
+            <ul class="list-group list-group-horizontal" id="sub-nav">
+                <a href="/sports"><li class="list-group-item list-ul">Sports</li></a>
+                <a href="/technology"><li class="list-group-item list-ul">Technology</li></a>
+                <a href="/entertainment"><li class="list-group-item list-ul">Entertainment</li></a>
+                <a href="/health"><li class="list-group-item list-ul">Health</li></a>
+                <a href="/food"><li class="list-group-item list-ul">Food</li></a>
+                <a href="/politics"><li class="list-group-item list-ul">Politics</li></a>
+            </ul>
+        </div>
+        <div class="content">
+            <ul class="list-group news-content">
+            {{#if image}}
+                <div class="sorry-not-found">
+                    <img src='./sorry1.jpg' width="200" height="200" alt="">
+                    <h3>Sorry we couldn't find anything.</h3>
+                </div>
+            {{else}}
+                {{#each data}}
+                <li class="list-group-item each-item">
+                    <img src="{{this.urlToImage}}" alt=""> 
+                        <div class="heading">{{this.title}}</div>
+                    <a href={{this.url}}>To Know more..</a></li>
+                {{/each}}
+            {{/if}}
+            </ul>
+        </div>
+        <footer>
+            <div class="dropdown sort">
+                <button class="btn btn-secondary  btn-floating sort-button btn-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-filter" aria-hidden="true"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/technology/sort/{{cy}}">Filter by Country</a>
+                    <a class="dropdown-item" href="#">Filter by Sources</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        function myFunction(x) {
+            x.classList.toggle("change");
+        }
+    </script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

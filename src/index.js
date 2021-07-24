@@ -15,7 +15,7 @@ app.set("view engine", "hbs");
 app.set("views", templatePath);
 
 app.get("/", (req, res) => {
-    res.render("sports");
+    res.redirect("/technology");
 });
 
 app.get("/register", (req, res) => {
